@@ -3,7 +3,7 @@
 function createMap(){
     //create the map
     var map = L.map('map', {
-        center: [20, 0],
+        center: [51.505, -0.09],
         zoom: 2
     });
 
@@ -21,11 +21,11 @@ function createMap(){
 
 //function to retrieve the data and place it on the map
 function getData(map){
-    //load the data
+    //load the geoJSON data and add to map
     $.ajax("data/MegaCities.geojson", {
         dataType: "json",
         success: function(response){
-             //create marker options
+             //create circle marker options
             var geojsonMarkerOptions = {
                 radius: 8,
                 fillColor: "#ff7800",
@@ -48,7 +48,6 @@ function getData(map){
     });
 
 }
-
 
 
 

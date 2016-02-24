@@ -1,0 +1,635 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "10th Ave Bridge over Mississippi River",
+        "Bic_2007": 990,
+        "Bic_2008": 1160,
+        "Bic_2009": 1120,
+        "Bic_2010": 1050,
+        "Bic_2011": 1090,
+        "Bic_2012": 1020,
+        "Bic_2013": 1040,
+        "Bic_2014": 830
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.243776,
+          44.978683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "15th Ave SE North of University Av SE",
+        "Bic_2007": 3260,
+        "Bic_2008": 2970,
+        "Bic_2009": 3170,
+        "Bic_2010": 2930,
+        "Bic_2011": 3940,
+        "Bic_2012": 4020,
+        "Bic_2013": 4330,
+        "Bic_2014": 3620
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.235096,
+          44.978995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "1st St S west of 3rd Av S",
+        "Bic_2007": 280,
+        "Bic_2008": 230,
+        "Bic_2009": 290,
+        "Bic_2010": 270,
+        "Bic_2011": 290,
+        "Bic_2012": 320,
+        "Bic_2013": 420,
+        "Bic_2014": 280
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.262461,
+          44.98197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "20th Ave S over 194",
+        "Bic_2007": 990,
+        "Bic_2008": 1110,
+        "Bic_2009": 1070,
+        "Bic_2010": 900,
+        "Bic_2011": 1150,
+        "Bic_2012": 970,
+        "Bic_2013": 740,
+        "Bic_2014": 680
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.282869,
+          44.999185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "2nd St N South of Plymouth Ave N",
+        "Bic_2007": 240,
+        "Bic_2008": 330,
+        "Bic_2009": 280,
+        "Bic_2010": 180,
+        "Bic_2011": 270,
+        "Bic_2012": 250,
+        "Bic_2013": 320,
+        "Bic_2014": 330
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.283014,
+          44.992053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "3rd Ave Bridge over Mississippi River",
+        "Bic_2007": 500,
+        "Bic_2008": 580,
+        "Bic_2009": 510,
+        "Bic_2010": 550,
+        "Bic_2011": 520,
+        "Bic_2012": 630,
+        "Bic_2013": 660,
+        "Bic_2014": 550
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.258665,
+          44.983403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "42nd St E east of Minnehaha Av S",
+        "Bic_2007": 240,
+        "Bic_2008": 170,
+        "Bic_2009": 140,
+        "Bic_2010": 100,
+        "Bic_2011": 100,
+        "Bic_2012": 140,
+        "Bic_2013": 260,
+        "Bic_2014": 230
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.218674,
+          44.926992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "7th S N over 194",
+        "Bic_2007": 90,
+        "Bic_2008": 120,
+        "Bic_2009": 70,
+        "Bic_2010": 100,
+        "Bic_2011": 90,
+        "Bic_2012": 130,
+        "Bic_2013": 170,
+        "Bic_2014": 140
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.247297,
+          44.965937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Cedar Ave S south of Riverside Ave S",
+        "Bic_2007": 280,
+        "Bic_2008": 340,
+        "Bic_2009": 300,
+        "Bic_2010": 390,
+        "Bic_2011": 350,
+        "Bic_2012": 260,
+        "Bic_2013": 400,
+        "Bic_2014": 440
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.247244,
+          44.970241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Cedar Lake Trail north of Royalston Ave N",
+        "Bic_2007": 520,
+        "Bic_2008": 1170,
+        "Bic_2009": 770,
+        "Bic_2010": 690,
+        "Bic_2011": 2840,
+        "Bic_2012": 2120,
+        "Bic_2013": 2900,
+        "Bic_2014": 2780
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.282029,
+          44.979688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Cedar Lake Trail west of Kenilworth Trail",
+        "Bic_2007": 1000,
+        "Bic_2008": 1220,
+        "Bic_2009": 1440,
+        "Bic_2010": 740,
+        "Bic_2011": 980,
+        "Bic_2012": 1470,
+        "Bic_2013": 1940,
+        "Bic_2014": 2700
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.309623,
+          44.967772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Central Ave NE north of Lowry Ave NE",
+        "Bic_2007": 210,
+        "Bic_2008": 260,
+        "Bic_2009": 330,
+        "Bic_2010": 270,
+        "Bic_2011": 340,
+        "Bic_2012": 190,
+        "Bic_2013": 380,
+        "Bic_2014": 350
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.247376,
+          45.013401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Dinkytown Greenway over Mississippi River",
+        "Bic_2007": 130,
+        "Bic_2008": 440,
+        "Bic_2009": 590,
+        "Bic_2010": 370,
+        "Bic_2011": 690,
+        "Bic_2012": 540,
+        "Bic_2013": 840,
+        "Bic_2014": 1270
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.240974,
+          44.977674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Franklin Ave Bridge over Mississippi River",
+        "Bic_2007": 1050,
+        "Bic_2008": 1470,
+        "Bic_2009": 1580,
+        "Bic_2010": 1510,
+        "Bic_2011": 1760,
+        "Bic_2012": 1630,
+        "Bic_2013": 1760,
+        "Bic_2014": 1990
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.222859,
+          44.963858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Glenwood Ave N west of Royalston Ave N",
+        "Bic_2007": 200,
+        "Bic_2008": 210,
+        "Bic_2009": 200,
+        "Bic_2010": 260,
+        "Bic_2011": 260,
+        "Bic_2012": 250,
+        "Bic_2013": 260,
+        "Bic_2014": 310
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.281641,
+          44.978973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Hennepin Ave Bridge over Mississippi River",
+        "Bic_2007": 1210,
+        "Bic_2008": 1640,
+        "Bic_2009": 1320,
+        "Bic_2010": 1380,
+        "Bic_2011": 1500,
+        "Bic_2012": 1570,
+        "Bic_2013": 1570,
+        "Bic_2014": 1380
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.263927,
+          44.985624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Hennepin Ave S north of 28th St W",
+        "Bic_2007": 400,
+        "Bic_2008": 520,
+        "Bic_2009": 350,
+        "Bic_2010": 390,
+        "Bic_2011": 310,
+        "Bic_2012": 330,
+        "Bic_2013": 270,
+        "Bic_2014": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.298247,
+          44.951987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Hiawatha LRT Trail east of 11th Ave S",
+        "Bic_2007": 810,
+        "Bic_2008": 1670,
+        "Bic_2009": 1400,
+        "Bic_2010": 1540,
+        "Bic_2011": 1540,
+        "Bic_2012": 1500,
+        "Bic_2013": 1530,
+        "Bic_2014": 1510
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.254597,
+          44.973702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Lake Street Bridge over Mississippi River",
+        "Bic_2007": 1390,
+        "Bic_2008": 1440,
+        "Bic_2009": 1560,
+        "Bic_2010": 1560,
+        "Bic_2011": 1860,
+        "Bic_2012": 1910,
+        "Bic_2013": 1650,
+        "Bic_2014": 1740
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.20149,
+          44.948714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Loring Bikeway Bridge over Lyndale Ave S",
+        "Bic_2007": 310,
+        "Bic_2008": 500,
+        "Bic_2009": 650,
+        "Bic_2010": 600,
+        "Bic_2011": 750,
+        "Bic_2012": 920,
+        "Bic_2013": 920,
+        "Bic_2014": 770
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.288064,
+          44.969984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Lyndale Ave S north of Franklin Ave",
+        "Bic_2007": 660,
+        "Bic_2008": 710,
+        "Bic_2009": 600,
+        "Bic_2010": 610,
+        "Bic_2011": 520,
+        "Bic_2012": 400,
+        "Bic_2013": 530,
+        "Bic_2014": 370
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.288015,
+          44.96273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Lyndale Ave S north of Loring Bikeway Bridge",
+        "Bic_2007": 910,
+        "Bic_2008": 1170,
+        "Bic_2009": 1300,
+        "Bic_2010": 1150,
+        "Bic_2011": 1280,
+        "Bic_2012": 1290,
+        "Bic_2013": 1670,
+        "Bic_2014": 1120
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.287972,
+          44.964268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Midtown Greenway east of Cedar Ave S",
+        "Bic_2007": 1880,
+        "Bic_2008": 2710,
+        "Bic_2009": 2650,
+        "Bic_2010": 2570,
+        "Bic_2011": 2700,
+        "Bic_2012": 3590,
+        "Bic_2013": 4110,
+        "Bic_2014": 5460
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.247394,
+          44.950576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Midtown Greenway west of Hennepin Ave S",
+        "Bic_2007": 1350,
+        "Bic_2008": 2860,
+        "Bic_2009": 2820,
+        "Bic_2010": 2970,
+        "Bic_2011": 3470,
+        "Bic_2012": 3000,
+        "Bic_2013": 3750,
+        "Bic_2014": 3820
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.298348,
+          44.950082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Midtown Greenway west of West River pkwy",
+        "Bic_2007": 760,
+        "Bic_2008": 1100,
+        "Bic_2009": 870,
+        "Bic_2010": 970,
+        "Bic_2011": 1130,
+        "Bic_2012": 1570,
+        "Bic_2013": 1710,
+        "Bic_2014": 1850
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.213934,
+          44.95523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Plymouth Ave Bridge over Mississippi River",
+        "Bic_2007": 290,
+        "Bic_2008": 350,
+        "Bic_2009": 380,
+        "Bic_2010": 300,
+        "Bic_2011": 430,
+        "Bic_2012": 370,
+        "Bic_2013": 550,
+        "Bic_2014": 720
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.272551,
+          44.993261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Riverside Ave S east of Cedar Ave",
+        "Bic_2007": 540,
+        "Bic_2008": 650,
+        "Bic_2009": 810,
+        "Bic_2010": 880,
+        "Bic_2011": 830,
+        "Bic_2012": 790,
+        "Bic_2013": 750,
+        "Bic_2014": 530
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.247237,
+          44.970453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Riverside Ave S over I94",
+        "Bic_2007": 300,
+        "Bic_2008": 390,
+        "Bic_2009": 340,
+        "Bic_2010": 450,
+        "Bic_2011": 400,
+        "Bic_2012": 260,
+        "Bic_2013": 470,
+        "Bic_2014": 700
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.23354,
+          44.964363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Stone Arch Bridge over Mississippi River",
+        "Bic_2007": 940,
+        "Bic_2008": 1370,
+        "Bic_2009": 1300,
+        "Bic_2010": 1250,
+        "Bic_2011": 1500,
+        "Bic_2012": 1590,
+        "Bic_2013": 1650,
+        "Bic_2014": 1620
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.254131,
+          44.980606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Location": "Washington Ave S over 135W",
+        "Bic_2007": 760,
+        "Bic_2008": 890,
+        "Bic_2009": 660,
+        "Bic_2010": 590,
+        "Bic_2011": 640,
+        "Bic_2012": 770,
+        "Bic_2013": 700,
+        "Bic_2014": 470
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.251417,
+          44.972133
+        ]
+      }
+    }
+  ]
+}
