@@ -1,1 +1,13 @@
-#map {height: 450px;}
+#map {
+	height: 650px;
+	width: 80%;
+	display: inline-block;
+}
+
+#panel {
+	width:20%;
+	padding:20px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
