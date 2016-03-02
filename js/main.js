@@ -6,7 +6,7 @@ function createMap(){
     //create the map
     var map = L.map('map', {
         center: [44.97, -93.25],
-        zoom: 12
+        zoom: 13
     });
 
     //add OSM base tilelayer
@@ -60,6 +60,11 @@ function createSequenceControls(map) {
 
     $('#panel').append('<button class="skip" id="reverse"> Reverse </button>');
     $('#panel').append('<button class = "skip" id="forward"> Skip </button>');
+
+    // replace reverse and skip with images//
+
+    $('#reverse').html('<img src="img/left.png">');
+    $('#forward').html('<img src="img/right.png">');
     
 
 };

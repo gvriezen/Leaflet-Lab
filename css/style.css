@@ -11,3 +11,24 @@
 	text-align: center;
 	vertical-align: top;
 }
+
+.range-slider {
+	width: 50%;
+}
+
+#forward {
+	float: right;
+
+}
+
+#reverse {
+	float: left;
+}
+
+#info {
+	width: 20%;
+	padding: 20px;
+	display: left;
+	text-align:center;
+	vertical-align: top;
+}
