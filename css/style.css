@@ -4,25 +4,41 @@
 	display: inline-block;
 }
 
+/*#header {
+	height: 50px;
+	width: 78%;
+	background-color: orange;
+	padding: 10px;
+	display: inline-block;
+	
+	border: 5px;
+	border-color: #000000;
+
+}
+*/
+
 #panel {
 	width:20%;
 	padding:20px;
 	display: inline-block;
-	text-align: center;
-	vertical-align: top;
+	
 }
 
 .range-slider {
-	width: 50%;
+	width: 75%;
+	border-top: 3px;
+
 }
 
 #forward {
 	float: right;
+	opacity: 0.9;
 
 }
 
 #reverse {
 	float: left;
+	opacity: 0.9;
 }
 
 #info {
