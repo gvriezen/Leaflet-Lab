@@ -67,7 +67,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Location": "20th Ave S over 194",
+        "Location": "20th Ave S over I-94",
         "Bic_2007": 990,
         "Bic_2008": 1110,
         "Bic_2009": 1070,
@@ -151,7 +151,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Location": "7th S N over 194",
+        "Location": "7th S N over I-94",
         "Bic_2007": 90,
         "Bic_2008": 120,
         "Bic_2009": 70,
@@ -571,7 +571,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Location": "Riverside Ave S over I94",
+        "Location": "Riverside Ave S over I-94",
         "Bic_2007": 300,
         "Bic_2008": 390,
         "Bic_2009": 340,

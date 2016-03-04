@@ -2,13 +2,15 @@
 //tileset source: http://maps.stamen.com/toner-hybrid/#12/37.7706/-122.3782
 //created by Grace Vriezen for Geography 575
 
-
 //step 1: function to instantiate the Leaflet map
 function createMap(){
     //create the map
     var map = L.map('map', {
-        center: [44.97, -93.27],
-        zoom: 13
+        center: [44.963, -93.26],
+        zoom: 13,
+        minZoom: 12,
+
+
     });
 
     //add OSM base tilelayer
@@ -16,33 +18,37 @@ function createMap(){
         attribution: '&copy; <a href="http://maps.stamen.com/toner-hybrid/#12/37.7707/-122.3783</a>'
     }).addTo(map);
 
+  
+
     //call getData function
     getData(map);
 };
 
-
 //step 2: function to retrieve the data and place it on the map
+
+   function processData(data) {
+    //empty array
+        var attributes = [];
+     //properties of the first feature in the dataset
+        var properties = data.features[0].properties;
+     //push each attribute name into attributes array
+             for (var attribute in properties) {
+     //only take attributes with bike count values
+             if (attribute.indexOf("Bic") > -1) {
+                 attributes.push(attribute);
+                };
+             };
+
+                 //check result 
+                 console.log(attributes);
+
+         return attributes;
+
+            };
+
 function getData(map, attributes){
 
      //create an attributes array
-            function processData(data) {
-                 var attributes = [0];
-                 //properties of the first feature in the dataset
-                 var properties = data.features[0].properties;
-                 //push each attribute name into attributes array
-                 for (var attribute in properties) {
-                    //only take attributes with bike count values
-                    if (attribute.indexOf("Bic") > -1) {
-                        attributes.push(attribute);
-                    };
-                 };
-
-                 // //check result 
-                 // console.log(attributes);
-
-                 return attributes;
-
-            };
     //load the geoJSON data
     $.ajax("data/bikes.geojson", {
         dataType: "json",
@@ -88,67 +94,69 @@ function createSequenceControls(map, attributes) {
     // replace reverse and skip with images instead//
 
     $('#reverse').html('<img src="img/left.png"> <id="left">');
-    $('#forward').html('<img src="img/right.png"> <id+"right>');
+    $('#forward').html('<img src="img/right.png"> <id="right>');
+    //click listener
 
-    // //click listener for buttons
+    $('.skip').click(function(){
+        //sequence
+        //get the old index value
+        var index = $('.range-slider').val();
+        // increment or decrement depending on button clicked
+        if ($(this).attr('id')== 'forward'){
+            index++
+            //step 7: if past the last attribute, wrap aroudn to the first attribute
+            index = index > 6 ? 0 : index;
 
-    // $('.skip').click(function(){
-    //     //sequence
-    //     //get the old index value
-    //     var index = $('.range-slider').val();
-    //     //increment or decrement based on what button is clicked
-    //     if ($(this).attr('id') == 'forward'){
-    //         index++;
-    //         //step 7: if past the last attribute, wrap around to first
-    //         index = index > 6 ? 0 : index;
-    //     } else if ($(this).attr('id') == 'reverse') {
-    //         index --;
-    //         //step 7: if past first attribute, wrap to last
-    //         index = index < 0 ? 6: index; 
-    //     };
+        } else if ($(this).attr('id') == 'reverse'){
+            index --;
+            //if past the first attribute, wrap around to last
+            index = index < 0 ? 6 : index; 
+        };
+        //update slider
+        $('.range-slider').val(index);
 
-    //     //update slider
+        //pass new attribute to update symbols
+        updatePropSymbols (map, attributes [index]);
+    });
+    //input listener for slider
+    $('.range-slider').on('input', function(){
+        //get new index value
+        var index = $(this).val();
+        //pass new attribute to update symbols
+        updatePropSymbols (map, attributes[index]);
 
-    //     $('range-slider').val(index);
-    // });
-    
-    // //input listener for slider
-
-    // $('.range-slider').on('input', function(){
-    //     //sequence
-    //     //get new index value
-    //     var index = $(this).val();
-
-    //     function updatePropSymbols (map, attributes [index]);
-    //         map.eachLayer (function(layer){
-    //             if (layer.feature && layer.feature.properties[attribute]){
-    //                 //update the layer style and popup
-    //                 //access feature properties
-    //                 var props = layer.feature.properties
-    //                 //update feature's radius based on new attribute values
-    //                 var radius = calcPropRadius (props[attribute]);
-    //                 layer.setRadius(radius);
-    //                 //add city to popup content string
-    //                 var popupContent = "<p><b>Location:</b>" + props.City + "</p>";
-    //                 //add formatted attribute to panel content string
-    //                 var year = attribute.split ("_") [1];
-    //                 popupContent += "<p><b> Bicyclist Counts in" + year + ":</b>" + props[attribute] + "</p>"
-    //                 //replace the layer popup
-    //                 layer.bindPopup(popupContent), {
-    //                     offset: new L.Point (0, -radius)
-    //                 });
-    //             };
-    //         });
-    // });
-
-    // console.log (slider);
+    });
 };
 
 
+// update prop symbols
+
+function updatePropSymbols (map, attribute) {
+            map.eachLayer (function(layer){
+                if (layer.feature && layer.feature.properties[attribute]){
+                    //update the layer style and popup
+                    //access feature properties
+                    var props = layer.feature.properties;
+                    //update feature's radius based on new attribute values
+                    var radius = calcPropRadius (props[attribute]);
+                    layer.setRadius(radius);
+                    //add city to popup content string
+                    var popupContent = "<p><b>Location:&nbsp;&nbsp;</b>" + props.Location + "</p>";
+                    //add formatted attribute to panel content string
+                    var year = attribute.split ("_") [1];
+                    popupContent += "<p><b> Bicyclist Counts in " + year + ":&nbsp;&nbsp;</b>" + props[attribute] + "</p>";
+                    //replace the layer popup
+                    layer.bindPopup(popupContent, {
+                        offset: new L.Point (0, -radius)
+                    });
+                };
+            });
+        };
+
+
+
 function pointToLayer (feature, latlng, attributes) {
-
-
-    var attribute = "Bic_2014";
+    var attribute = attributes [0];
     //check console
     console.log(attribute);
 
@@ -161,19 +169,17 @@ function pointToLayer (feature, latlng, attributes) {
                 opacity: 1,
                 fillOpacity: 0.7
             };
-
-        
             //determine value for selected attribute
             var attValue = Number(feature.properties[attribute]);
-            //Step 6: Give circle markers radius based on attriuvte value
+            //Step 6: Give circle markers radius based on attribute value
             options.radius = calcPropRadius (attValue);
             //create circle marker layer
             var layer = L.circleMarker (latlng, options);
             //build popup content string
-            var popupContent = "<p><b>Location:</b>" +  feature.properties.Location + "</p><p><b>" + attribute + ":</b> " + feature.properties[attribute] + "</p>";
+            var popupContent = "<p><b>Location:&nbsp;&nbsp;</b>" +  feature.properties.Location + "</p><p><b>" +  "</b></p>";
             //add  formatted attribute to popup content string
             var year = attribute.split ("_") [1];
-            popupContent += "<p><b>Bike Counts in " + year + ":</b>" + feature.properties ["Bic_2014"] + "</p>";
+            popupContent += "<p><b>Bicyclist Counts in " + year + ":&nbsp;&nbsp;</b>" + feature.properties [attribute] + "</p>";
             //bind popup to circle marker
             layer.bindPopup (popupContent, {
                 offset: new L.Point (0, -options.radius)
@@ -195,21 +201,22 @@ function pointToLayer (feature, latlng, attributes) {
 
         };
 
-// var polyline = [
 
-// [44.970251, -93.247457],
-// [44.966790, -93.238606],
+    // // add polylines to show precise bike routes; fuss with this later to get working!
+    // function polylines (map) {
+    //     var polylinePoints = [
+    //     [44.970251, -93.247435],
+    //     [44.966574, -93.238591],
 
+    //     ];
 
-// ];
+    //     var polylineOptions = {
+    //         color: 'red'
 
-// var polylineOptions = {
+    //     };
+    //     var polyline = L.polyline(polylinePoints,polylineOptions).addTo(map);
 
-// };
-
-
-//  L.polyline (polyline, polylineOptions).addTo(map);
-
+    // };
 
 
    //create a Leaflet GeoJSON layer and add it to the map, point to layer 
@@ -222,4 +229,4 @@ function pointToLayer (feature, latlng, attributes) {
             }).addTo(map);
         };
 
-jQuery(document).ready(createMap);
+$(document).ready(createMap);
