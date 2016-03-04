@@ -4,30 +4,33 @@
 	display: inline-block;
 }
 
-/*#header {
+#header {
 	height: 50px;
 	width: 78%;
-	background-color: orange;
+	background-color: black;
 	padding: 10px;
 	display: inline-block;
-	
 	border: 5px;
 	border-color: #000000;
 
 }
-*/
+
+.leaflet-popup-content p {
+	margin: 1em 0;
+}
+
+
 
 #panel {
 	width:20%;
 	padding:20px;
-	display: inline-block;
-	
+	vertical-align: top;
+	text-align: center;
 }
 
 .range-slider {
 	width: 75%;
 	border-top: 3px;
-
 }
 
 #forward {
@@ -44,7 +47,7 @@
 #info {
 	width: 20%;
 	padding: 20px;
-	display: left;
+	display: right;
 	text-align:center;
-	vertical-align: top;
+	
 }
