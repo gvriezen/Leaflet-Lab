@@ -13,12 +13,35 @@ function createMap(){
 
     });
 
+    //filter function - is not working entirely, markers and buttons show, but will not switch through
+
+var markers = L.geoJson(bikes, {
+    filter: function(feature, layer) {
+        return feature.properties.bridges;
+    }
+
+
+}).addTo(map);
     //add OSM base tilelayer
     L.tileLayer('http://b.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://maps.stamen.com/toner-hybrid/#12/37.7707/-122.3783</a>'
     }).addTo(map);
 
-  
+ 
+
+
+    $('.menu-ui a').on('click', function() {
+    // For each filter link, get the 'data-filter' attribute value.
+    var filter = $(this).data('filter');
+    $(this).addClass('active').siblings().removeClass('active');
+    markers.setFilter(function(f) {
+        // If the data-filter attribute is set to "all", return
+        // all (true). Otherwise, filter on markers that have
+        // a value set to true based on the filter name.
+        return (filter === 'all') ? true : f.properties[filter] === true;
+    });
+    return false;
+});
 
     //call getData function
     getData(map);
@@ -152,6 +175,73 @@ function updatePropSymbols (map, attribute) {
                 };
             });
         };
+
+//filter dunction
+
+var bikes = [{
+    "type": "Feature",
+    "properties": {
+        "name": "3rd Ave Bridge over Mississippi River",
+        "bridges": true
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.258665, 44.983403]
+    }
+}, {
+    "type": "Feature",
+    "properties": {
+        "name": "Cedar Lake Trail north of Royalston Ave N",
+        "bridges": false
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.282029,44.979688]
+    }
+},
+
+    {
+    "type": "Feature",
+    "properties": {
+        "name": "Cedar Lake Trail west of Kenilworth Trail",
+        "bridges": false
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.309623, 44.967772]
+    }
+}, {
+    "type": "Feature",
+    "properties": {
+        "name": "Dinkytown Greenway over Mississippi River",
+        "bridges": false
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.240974,,44.977674]
+    }
+},  {
+    "type": "Feature",
+    "properties": {
+        "name": "Franklin Ave Bridge over Mississippi River",
+        "bridges": true
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.222859, 44.963858]
+    }
+}, {
+    "type": "Feature",
+    "properties": {
+        "name": "Hennepin Ave Bridge over Mississippi River",
+        "bridges": true
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-93.263927,44.985624]
+    }
+}];
+
 
 
 
