@@ -80,6 +80,7 @@ function getData(map, attributes){
             //call functions to create proportional symbols and sequencer
             createPropSymbols (response, map, attributes);
             createSequenceControls (map, attributes);
+            createLegend (map, attributes);
         }
     });
 };
@@ -101,8 +102,37 @@ function calcPropRadius (attValue){
 //sequence controls
 
 function createSequenceControls(map, attributes) {
-    //implement slider
-    $('#panel').append('<input class = "range-slider" type="range">');
+
+     var SequenceControl = L.Control.extend({
+        options: {
+            position: 'bottomleft'
+        },
+
+        onAdd: function (map) {
+            // create the control container div with a particular class name
+            var container = L.DomUtil.create('div', 'sequence-control-container');
+
+            //kill any mouse event listeners on the map
+            $(container).on('mousedown dblclick', function(e){
+                L.DomEvent.stopPropagation(e);
+            });
+
+            // ... initialize other DOM elements, add listeners, etc.
+
+             $(container).append('<input class="range-slider" type="range">');
+            // //reverse and skip buttons
+            $(container).append('<button class="skip" id="reverse"> Reverse </button>');
+            $(container).append('<button class="skip" id="forward"> Skip </button>');
+
+            return container;
+        }
+    });
+
+      map.addControl(new SequenceControl());
+
+
+    // //implement slider
+    // $('#panel').append('<input class = "range-slider" type="range">');
     //set slider attributes
     $('.range-slider').attr({
         max: 7,
@@ -110,14 +140,14 @@ function createSequenceControls(map, attributes) {
         value: 0,
         step: 1
     });
-
-    $('#panel').append('<button class="skip" id="reverse"> Reverse </button>');
-    $('#panel').append('<button class = "skip" id="forward"> Skip </button>');
+    // reverse and skip buttons
+    // $('#panel').append('<button class="skip" id="reverse"> Reverse </button>');
+    // $('#panel').append('<button class = "skip" id="forward"> Skip </button>');
 
     // replace reverse and skip with images instead//
 
     $('#reverse').html('<img src="img/left.png"> <id="left">');
-    $('#forward').html('<img src="img/right.png"> <id="right>');
+    $('#forward').html('<img src="img/right.png"> <id="right">');
     //click listener
 
     $('.skip').click(function(){
@@ -151,6 +181,123 @@ function createSequenceControls(map, attributes) {
     });
 };
 
+//create legend
+
+//PSEUDO-CODE FOR ATTRIBUTE LEGEND
+// 1. Add an `<svg>` element to the legend container
+// 2. Add a `<circle>` element for each of three attribute values: max, mean, and min
+// 3. Assign each `<circle>` element a center and radius based on the dataset max, mean, and min values of the current attribute
+// 4. Create legend text to label each circle
+// 5. Update circle attributes and legend text when the data attribute is changed by the user
+
+function createLegend (map, attributes) {
+    var LegendControl = L.Control.extend ({
+        options: {
+            position: 'bottomright'
+        },
+        onAdd: function (map) {
+            //create the control container w/ particular class name
+            var container = L.DomUtil.create ('div', 'legend-control-container');
+            //script for temporal legend
+            // //add city to legend content string
+            // var legendContent = "<p><b>Bicyclists in:&nbsp;&nbsp;</b>" + year + ":&nbsp;&nbsp;</b>" + props[attribute] + "</p>";
+            //use jquerty to append to div
+            $(container).append('<div id="temporal-legend">')
+
+            //Step 1: start attribute legend svg string
+            var svg = '<svg id="attribute-legend" width="180px" height="180px">';
+
+             //array of circle names to base loop on
+            var circles = {
+                max: 20, 
+                mean: 40, 
+                min: 60,
+            };
+
+            //Step 2: loop to add each circle and text to svg string
+            for (var circle in circles){
+            //circle string
+            svg += '<circle class="legend-circle" id="' + circle + 
+            '" fill="#4EB0AC" fill-opacity="0.8" stroke="#F1F2F2" cx="90"/>';
+
+             //text string
+            svg += '<text id="' + circle + '-text" x="65" y=" ' + circles[circle] + ' "></text>';
+        };
+
+        //close svg string
+        svg += "</svg>";
+
+             //add attribute legend svg to container
+            $(container).append(svg);
+
+            return container;
+        }
+    });
+
+
+    map.addControl (new LegendControl());
+     updateLegend(map, attributes[0]);
+};
+
+//Calculate the max, mean, and min values for a given attribute
+function getCircleValues(map, attribute){
+    //start with min at highest possible and max at lowest possible number
+    var min = Infinity,
+        max = -Infinity;
+
+    map.eachLayer(function(layer){
+        //get the attribute value
+        if (layer.feature){
+            var attributeValue = Number(layer.feature.properties[attribute]);
+
+            //test for min
+            if (attributeValue < min){
+                min = attributeValue;
+            };
+
+            //test for max
+            if (attributeValue > max){
+                max = attributeValue;
+            };
+        };
+    });
+
+    //set mean
+    var mean = (max + min) / 2;
+
+    //return values as an object
+    return {
+        max: max,
+        mean: mean,
+        min: min
+    };
+};
+
+//Example 3.7 line 1...Update the legend with new attribute
+function updateLegend(map, attribute){
+    //create content for legend
+    var year = attribute.split("_")[1];
+    var content = "Bicyclists in " + year;
+
+    //replace legend content
+    $('#temporal-legend').html(content);
+
+    //get the max, mean, and min values as an object
+    var circleValues = getCircleValues(map, attribute);
+
+    for (var key in circleValues) {
+        //get the radius
+        var radius = calcPropRadius (circleValues[key]);
+        //assign cy and r attributes
+        $('#' + key).attr({
+            cy: 179 - radius, 
+            r: radius 
+        });
+
+        //Step 4: add legend text
+        $('#'+key+'-text').text(Math.round(circleValues[key]*100)/100);
+    };
+};
 
 // update prop symbols
 
@@ -173,10 +320,11 @@ function updatePropSymbols (map, attribute) {
                         offset: new L.Point (0, -radius)
                     });
                 };
+
             });
         };
 
-//filter dunction
+//filter function
 
 var bikes = [{
     "type": "Feature",
@@ -253,7 +401,7 @@ function pointToLayer (feature, latlng, attributes) {
          //create circle marker options
             var options = {
                 radius: 8,
-                fillColor: "#000000",
+                fillColor: "#4fb0ad",
                 color: "#fff",
                 weight: 1.5,
                 opacity: 1,
