@@ -4,14 +4,16 @@
 	display: inline-block;
 }
 
-#header {
-	height: 50px;
-	width: 78.5%;
-	background-color: black;
-	padding: 10px;
+title {
+	width: 80%;
+	height: 100px;
 	display: inline-block;
-	border: 5px;
-	border-color: #000000;
+	margin: 5px auto;
+	background-color: #4EB0AC;
+	font-size: 65pt;
+	text-align: center;
+	font-family: Trebuchet;
+	color: #fff;
 
 }
 
@@ -21,31 +23,30 @@
 
 #panel {
 	width:20%;
-	padding:20px;
 	vertical-align: top;
 	text-align: center;
 }
 
 .range-slider {
-	width: 75%;
-	border-top: 3px;
-
+	width: 170px;
+	height: 60px;
+	border-top: 2px;
 }
 
 .sequence-control-container {
     width: 300px;
-    height: 90px;
-    background-color: rgba(255,255,255,0.8);
+    height: 75px;
+    background-color: #ffffff;
     line-height: 5px;
     text-align: center;
-    border: solid gray 3px;
+  /* padding: 10px auto;*/
+    border: solid #4EB0AC 5px;
 }
 
 #forward {
 	float: right;
 	opacity: 0.9;
-	padding: 2px;
-	
+	padding: 2px;	
 
 }
 
@@ -57,17 +58,31 @@
 
 #info {
 	width: 20%;
-	padding: 20px;
 	display: right;
 	text-align: center;
 	
 }
 
 #temporal-legend {
-	background-color: #ffffff;
-	border-width: 5px;
+	background-color: rgba(79, 176, 173, 0.8);
+	border-width: 3px;
 	border-color: #000000;
 	float:right;
-	width: 130px;
+	width: 120px;
 	height: 150px;
 }
+
+h3{
+	color: #808080;
+}
+
+footer{
+	width: 100%;
+	height: 320px;
+	background-color: rgba(79, 176, 173, 0.8);
+	color:#ffffff;
+	font-size: 12pt;
+	display: inline-block;
+	margin: 5px auto;
+}
+

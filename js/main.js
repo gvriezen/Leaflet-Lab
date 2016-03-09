@@ -273,12 +273,11 @@ function getCircleValues(map, attribute){
     };
 };
 
-//Example 3.7 line 1...Update the legend with new attribute
+//Update the legend with new attribute
 function updateLegend(map, attribute){
     //create content for legend
     var year = attribute.split("_")[1];
     var content = "Bicyclists in " + year;
-
     //replace legend content
     $('#temporal-legend').html(content);
 
@@ -297,6 +296,8 @@ function updateLegend(map, attribute){
         //Step 4: add legend text
         $('#'+key+'-text').text(Math.round(circleValues[key]*100)/100);
     };
+
+    updateLegend(map, attributes[1]);
 };
 
 // update prop symbols
@@ -321,10 +322,16 @@ function updatePropSymbols (map, attribute) {
                     });
                 };
 
-            });
+            }); 
+                // allow legend circles to change when attribute changes
+
+                    updateLegend(map, attribute);
+
         };
 
 //filter function
+
+// function filterBikes (map, attribute) {
 
 var bikes = [{
     "type": "Feature",
@@ -390,6 +397,8 @@ var bikes = [{
     }
 }];
 
+// };
+
 
 
 
@@ -403,7 +412,7 @@ function pointToLayer (feature, latlng, attributes) {
                 radius: 8,
                 fillColor: "#4fb0ad",
                 color: "#fff",
-                weight: 1.5,
+                weight: 2,
                 opacity: 1,
                 fillOpacity: 0.7
             };
@@ -433,6 +442,9 @@ function pointToLayer (feature, latlng, attributes) {
                         this.closePopup ();
                     }
                 });
+
+
+
             // return circle marker to L.geoJson pointToLayer option;
             return layer;
 
