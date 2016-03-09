@@ -4,14 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<title>Mill City Bikes</title>
-
+		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<!--put your external stylesheet links here-->
 		<script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
 		<link rel="stylesheet" href="lib/leaflet/leaflet.css">
 		<link rel="stylesheet" href="css/style.css">
-	
-
 		<!--[if IE<9]>
 			<link rel="stylesheet" href="css/style.ie.css">
 		<![endif]-->
@@ -19,110 +17,84 @@
 
 	<body>
 		<!--put your initial page content here-->
-
-	
-  <!--   <svg id="Layer_1" width="180px" height="180px">
-    	<style type="text/css">
-	.st0{opacity:0.7;fill:#4EB0AC;stroke:#F1F2F2;stroke-width:2;stroke-miterlimit:10;}
-</style>
-<circle class="st0" cx="293" cy="389" r="180"/>
-       
-    </svg> -->
-
 <style> 
-
-.menu-ui {
-  background:#fff;
-  position:absolute;
-  top:10px;right:10px;
-  z-index:1;
-  border-radius:3px;
-  width:120px;
-  border:1px solid rgba(0,0,0,0.4);
-  }
-  .menu-ui a {
-    font-size:13px;
-    color:#404040;
-    display:block;
-    margin:0;padding:0;
-    padding:10px;
-    text-decoration:none;
-    border-bottom:1px solid rgba(0,0,0,0.25);
-    text-align:center;
-    }
-    .menu-ui a:first-child {
-      border-radius:3px 3px 0 0;
-      }
-    .menu-ui a:last-child {
-      border:none;
-      border-radius:0 0 3px 3px;
-      }
-    .menu-ui a:hover {
-      background:#f8f8f8;
-      color:#404040;
-      }
-    .menu-ui a.active,
-    .menu-ui a.active:hover {
-      background:#3887BE;
-      color:#FFF;
-      }
-
-      </style>
-		
-			<div id="header"> </div>
-			<title>
+</style>
+		<div id="header"> </div>
+			<header>
+				<img src = "img/mn.png" alt="Minnesota" title="MN" id="mn"/>
 				Mill City Bikes
+				<img src = "img/bike.png" alt="Bike" title="Bike" id="bike"/>
+			</header>
 
-			</title>
 
-
-
-			<nav class='menu-ui'>
+		<div id="map"></div> 	
+		<!-- 	<nav class='menu-ui'>
   			<a href='#' class='active' data-filter='all'>Show all</a>
   			<a href='#' data-filter='bridges'>Bridges</a>
  			 <a href='#' data-filter='bikeways'>Bikeways</a>
  			 <a href='#' data-filter='streets'>Streets</a>
-			</nav>
+			</nav> -->
 
+		<div id="panel">
+			<div id="panelcontent"></div>
+			<h3> History of Biking in Minneapolis </h3>
+			<h4> Bike City </h4>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is perhaps no other metro city in the U.S. known for it's biking than Minneapolis. The city has been a "bike city" since the bicycle entered American culture in the 1800's. During this time, Minneapolis was also establishing itself as a frontrunner in the milling industry. As the Minneapolis and Saint Paul are situated between the Mississippi River, the "Twin Cities" grew into a milling hub, with an anchor point being Saint Anthony Falls. 
+			<h4> Milling and Railroad Expansion</h4>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the same time, railroad systems were expanding across the are to accomodate the millers in the major cities along the Mississippi River. Once the need for railroad transport declined, these rails were eventually converted into bikepaths. The Midtown Greenway is an example of a notable bike path that was created after land was bought from Canadian Pacific Railway. 
+			<h4> Stone Arch Bridge</h4>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another notable bikepath runs along the Stone Arch Bridge, which is centered over Saint Anthony Falls. The bridge was constructed in 1883 by Great Northern Railway and was used to accomadate passsenger rail trains. In 1994, the bridge was then converted to a trail for bicyclists and pedestrians to utilize, offering onlookers a view of Saint Anthony Falls, a geographic landmark which is integral to the history of Minneapolis.
+			<br></br>
+
+			<h3> Minneapolis Bicycle Master Plan</h3>
+			<h4> Overview </h4>
+			<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minneapolis' Bicycle Master Plan includes the propsed implementation of 30 miles of new on-street bike facilities. Within this plan, the city has pinpointed priority areas for such improvements. These facilities include off-street trails, regular bike lanes, shared lanes, and bike boulevards. Through the implementation of this plan, the number of new Minneapolis bikeways will potentially increase from 213 miles (as of 2014) to 403 miles.
+			</p>
+			<h4>Criteria</h4>
+			<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Considerations for selecting newly implemented bikeways include general issues of transportation as well as a focus on equity. Bikeway locations will be implemented based on locations of high bicycle demand, high traffic conflict, and good network integration. Factors of equity in bikeway implementation include racial and ethnic populations as determined by census data, and economic considerations, which focus on concentrated areas of poverty. Additional considerations planned street reconstruction as well as project "linkages" to programs carried out by both Hennepin County and Minnesota Department of Transportation. </P>
 			
+		</div>
 
-			<div id="map"></div> 
-		
-			<div id="panel"></div>
-
-			<div id="info"></div>
-
-			<!-- Bike Counts in Minneapolis 
-			2007-2014
-			<br> </br>
-
-			 - History of Milling
-			 <br> </br>
-			 - Railroad Expansion
-			 <br> </br>
-			 - Bike Paths
-			 <br> </br>
-			 - 2020 Bike Plan
-			 <br> </br>
- -->
-			 <div id = "footer"></div>
+		 <div id = "footer"></div>
 			 <footer>
-			 <h3>
-			 Count Methodology
-			</h3>
+			 	<h3>Stone Arch Bridge</h3>
+			 	<br>
+			 	<div id="saf">
+			 <figure>
+			 	<img src = "img/sab.jpg" alt="Stone Arch Bridge Present" title="Stone Arch Bridge Present" id="sab"/>
+			 	<br>
+			 	<figcaption> Stone Arch Bridge with Bike Path </figcaption>
+			 </figure>
+
+			 <figure> 
+			 		<img src = "img/mntrain.jpg" alt="Stone Arch Bridge Past" title="Stone Arch Bridge Past" id="train"/>
+			 	<br>
+			 	<figcaption> Stone Arch Bridge with Railroad </figcaption>
+			 </figure>
+			 	</div>
+
+
+			 	<h3>Count Methodology</h3>
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Minneapolis Public Works Department conducts cyclist traffic counts each year at various locations throughout the city. In connection with Bike Walk Twin Cities, counts have been conducted from 2007-2013, as part of the Non-Motorized Transporation Program. After the pilot program, the city's public works department took control of the bicyclist count program. 
-			</p>
-			<h3> Methodology</h3>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Minneapolis Public Works Department conducts cyclist traffic counts each year at various locations throughout the city. In connection with Bike Walk Twin Cities, counts have been conducted from 2007-2013, as part of the Non-Motorized Transporation Program. After the pilot program, the city's public works department took control of the bicyclist count program.
+				Field observations were conducted weekdays during mid-September between 4:00 and 6:00pm. An extrapolation factor was used to estimate the traffic over a day-long period. Automated counts were also implemented in order to understand traffic patterns within a long-term scope.
+				When determining the yearly changes in bicyclist traffic, the department performed counts in 30 benchmark locations, which can be seen on the map. Beyond this, 300 additional locations are counted every 3-4 years, and 100 locations are are sites where "special counts" are conducted
+			<h3>Attribution</h3>
+			<div id = "attribution">
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Field observations were conducted weekdays during mid-September between 4:00-6:00pm. An extrapolation factor was used to estimate the traffic over a day-long period. Automated counts were also implemented in order to understand traffic patterns within a long-term scope.
-				<br></br>
-
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to determine the yearly changes in bicyclist traffic, the department performed counts in 30 benchmark locations, which can be seen on the map. Beyond this, 300 additional locations are counted every 3-4 years, and 100 locations are are sites where "special counts" are conducted
+				Data from <a href = "http://www.minneapolismn.gov/www/groups/public/@publicworks/documents/images/wcms1p-135319.pdf"> City of Minneapolis </a> <br>
+				Information from <a href = "http://www.minneapolismn.gov/www/groups/public/@publicworks/documents/webcontent/convert_275983.pdf"> City of Minneapolis' Bicycle Master Plan (Ch 1, Ch 2) </a> and <a href = "http://www.minneapolismn.gov/www/groups/public/@publicworks/documents/images/wcms1p-144745.pdf"> Protected Bikeway Update (2015) </a>
+				<br>
+				Symbols from <a href = "https://thenounproject.com/arturo.arce.12/"> Arturo Arce </a>, <a href = "https://thenounproject.com/edward/">Edward Boatman </a>, and <a href = "https://thenounproject.com/arturo.arce.12/"> Alex Valdivia </a> at <a href = "https://thenounproject.com/alejovaldivia/"> The Noun Project </a>
+				<br>
+				Images from <a href = "http://stonearchbridge.com/"> Stone Arch Bridge </a> and <a href= "http://collections.mnhs.org/cms/largerimage.php?irn=10356805&catirn=10779870&return=displaymode=grid&q=stone%20arch%20bridge&startindex=101&type[]=Photographs"> Minnesota Historical Society </a>
+			</p><p>
+			</div>
+			<div id ="author"> Map created by Grace Vriezen for Geography 575 </div>
 			</p>
-
-
 			</footer>
+
 		<!--you can also use this space for internal scripts or stylesheets;
 		place these within <script> or <style> tags-->
 

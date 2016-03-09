@@ -1,52 +1,41 @@
-//source data: http://www.minneapolismn.gov/www/groups/public/@publicworks/documents/images/wcms1p-135319.pdf\
+//data source: http://www.minneapolismn.gov/www/groups/public/@publicworks/documents/images/wcms1p-135319.pdf\
 //tileset source: http://maps.stamen.com/toner-hybrid/#12/37.7706/-122.3782
 //created by Grace Vriezen for Geography 575
 
 //step 1: function to instantiate the Leaflet map
 function createMap(){
+
+    var southWest = L.latLng(44.893141, -93.327398),
+        northEast = L.latLng(45.013166, -93.118221),
+        bounds = L.latLngBounds(southWest, northEast);
     //create the map
     var map = L.map('map', {
         center: [44.963, -93.26],
         zoom: 13,
         minZoom: 12,
-
-
+        maxBounds: bounds,
+       
     });
 
-    //filter function - is not working entirely, markers and buttons show, but will not switch through
+   // function overlay () {
+   //  var bridge = L.marker([44.980530, -93.254743]).bindPopup('Stone Arch Bridge'),
+   //      midtown = L.marker([44.950503, -93.269043]).bindPopup('Midtown Greenway');
+   //  var landmarks = L.layerGroup ([bridge, midtown]);
 
-var markers = L.geoJson(bikes, {
-    filter: function(feature, layer) {
-        return feature.properties.bridges;
-    }
+   //  var overlayMap = {
+   //      "Landmarks": landmarks
+   //      };
+   //  L.control.layers(overlayMap).addTo(map);
+   //  };
 
-
-}).addTo(map);
-    //add OSM base tilelayer
+    //add Stamen base tilelayer
     L.tileLayer('http://b.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://maps.stamen.com/toner-hybrid/#12/37.7707/-122.3783</a>'
     }).addTo(map);
 
- 
-
-
-    $('.menu-ui a').on('click', function() {
-    // For each filter link, get the 'data-filter' attribute value.
-    var filter = $(this).data('filter');
-    $(this).addClass('active').siblings().removeClass('active');
-    markers.setFilter(function(f) {
-        // If the data-filter attribute is set to "all", return
-        // all (true). Otherwise, filter on markers that have
-        // a value set to true based on the filter name.
-        return (filter === 'all') ? true : f.properties[filter] === true;
-    });
-    return false;
-});
-
     //call getData function
     getData(map);
 };
-
 //step 2: function to retrieve the data and place it on the map
 
    function processData(data) {
@@ -61,17 +50,11 @@ var markers = L.geoJson(bikes, {
                  attributes.push(attribute);
                 };
              };
-
-                 //check result 
-                 console.log(attributes);
-
          return attributes;
 
             };
-
+//get data function to retrieve geojson
 function getData(map, attributes){
-
-     //create an attributes array
     //load the geoJSON data
     $.ajax("data/bikes.geojson", {
         dataType: "json",
@@ -132,7 +115,6 @@ function createSequenceControls(map, attributes) {
 
 
     // //implement slider
-    // $('#panel').append('<input class = "range-slider" type="range">');
     //set slider attributes
     $('.range-slider').attr({
         max: 7,
@@ -140,10 +122,6 @@ function createSequenceControls(map, attributes) {
         value: 0,
         step: 1
     });
-    // reverse and skip buttons
-    // $('#panel').append('<button class="skip" id="reverse"> Reverse </button>');
-    // $('#panel').append('<button class = "skip" id="forward"> Skip </button>');
-
     // replace reverse and skip with images instead//
 
     $('#reverse').html('<img src="img/left.png"> <id="left">');
@@ -158,12 +136,12 @@ function createSequenceControls(map, attributes) {
         if ($(this).attr('id')== 'forward'){
             index++
             //step 7: if past the last attribute, wrap aroudn to the first attribute
-            index = index > 6 ? 0 : index;
+            index = index > 7 ? 0 : index;
 
         } else if ($(this).attr('id') == 'reverse'){
             index --;
             //if past the first attribute, wrap around to last
-            index = index < 0 ? 6 : index; 
+            index = index < 0 ? 7 : index; 
         };
         //update slider
         $('.range-slider').val(index);
@@ -205,7 +183,7 @@ function createLegend (map, attributes) {
             $(container).append('<div id="temporal-legend">')
 
             //Step 1: start attribute legend svg string
-            var svg = '<svg id="attribute-legend" width="180px" height="180px">';
+            var svg = '<svg id="attribute-legend" width="160px" height="60px">';
 
              //array of circle names to base loop on
             var circles = {
@@ -218,10 +196,10 @@ function createLegend (map, attributes) {
             for (var circle in circles){
             //circle string
             svg += '<circle class="legend-circle" id="' + circle + 
-            '" fill="#4EB0AC" fill-opacity="0.8" stroke="#F1F2F2" cx="90"/>';
+            '" fill="#4EB0AC" fill-opacity="0.8" stroke="#F1F2F2" cx="80"/>';
 
              //text string
-            svg += '<text id="' + circle + '-text" x="65" y=" ' + circles[circle] + ' "></text>';
+            svg += '<text id="' + circle + '-text" x="130" y=" ' + circles[circle] + ' "></text>';
         };
 
         //close svg string
@@ -289,7 +267,7 @@ function updateLegend(map, attribute){
         var radius = calcPropRadius (circleValues[key]);
         //assign cy and r attributes
         $('#' + key).attr({
-            cy: 179 - radius, 
+            cy: 84 - radius, 
             r: radius 
         });
 
@@ -325,82 +303,9 @@ function updatePropSymbols (map, attribute) {
             }); 
                 // allow legend circles to change when attribute changes
 
-                    updateLegend(map, attribute);
+            updateLegend(map, attribute);
 
         };
-
-//filter function
-
-// function filterBikes (map, attribute) {
-
-var bikes = [{
-    "type": "Feature",
-    "properties": {
-        "name": "3rd Ave Bridge over Mississippi River",
-        "bridges": true
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.258665, 44.983403]
-    }
-}, {
-    "type": "Feature",
-    "properties": {
-        "name": "Cedar Lake Trail north of Royalston Ave N",
-        "bridges": false
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.282029,44.979688]
-    }
-},
-
-    {
-    "type": "Feature",
-    "properties": {
-        "name": "Cedar Lake Trail west of Kenilworth Trail",
-        "bridges": false
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.309623, 44.967772]
-    }
-}, {
-    "type": "Feature",
-    "properties": {
-        "name": "Dinkytown Greenway over Mississippi River",
-        "bridges": false
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.240974,,44.977674]
-    }
-},  {
-    "type": "Feature",
-    "properties": {
-        "name": "Franklin Ave Bridge over Mississippi River",
-        "bridges": true
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.222859, 44.963858]
-    }
-}, {
-    "type": "Feature",
-    "properties": {
-        "name": "Hennepin Ave Bridge over Mississippi River",
-        "bridges": true
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-93.263927,44.985624]
-    }
-}];
-
-// };
-
-
-
 
 function pointToLayer (feature, latlng, attributes) {
     var attribute = attributes [0];
@@ -442,34 +347,10 @@ function pointToLayer (feature, latlng, attributes) {
                         this.closePopup ();
                     }
                 });
-
-
-
             // return circle marker to L.geoJson pointToLayer option;
             return layer;
-
-
         };
 
-
-    // // add polylines to show precise bike routes; fuss with this later to get working!
-    // function polylines (map) {
-    //     var polylinePoints = [
-    //     [44.970251, -93.247435],
-    //     [44.966574, -93.238591],
-
-    //     ];
-
-    //     var polylineOptions = {
-    //         color: 'red'
-
-    //     };
-    //     var polyline = L.polyline(polylinePoints,polylineOptions).addTo(map);
-
-    // };
-
-
-   //create a Leaflet GeoJSON layer and add it to the map, point to layer 
    function createPropSymbols (data, map, attributes) {
             L.geoJson(data, {
                 pointToLayer: function (feature, latlng) {

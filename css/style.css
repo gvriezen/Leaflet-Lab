@@ -1,31 +1,65 @@
 #map {
-	height: 700px;
-	width: 80%;
-	display: inline-block;
-}
-
-title {
-	width: 80%;
-	height: 100px;
+	height: 650px;
+	width: 70%;
+	float: left;
 	display: inline-block;
 	margin: 5px auto;
-	background-color: #4EB0AC;
-	font-size: 65pt;
+	padding: 10px;
+	
+}
+header{
+	width: 100%;
+	height: 80px;
+	margin: 10px auto;
+	background-color: #fff;
+	font-size: 50pt;
 	text-align: center;
 	font-family: Trebuchet;
-	color: #fff;
-
+	color: #4EB0AC;
+	box-shadow: 3px 3px 3px 3px #777777;
 }
+body {
+	background-color: #000000;
+	padding: 20px;
+	/*width: 90%;*/
+}
+
+#mn{
+	width: 60px;
+	height: 75px;
+	vertical-align: top;
+}
+
+#bike{
+	width: 100px;
+	height: 65px;
+	vertical-align: middle;
+}
+
+
+#panel {
+	float: right;
+	width: 24%;
+	height: 1180px;
+	color:#000;
+	background-color: #4EB0AC;
+	margin: 5px auto;
+	padding: 10px;
+	display: inline-block;
+	font-size: 10pt;
+	overflow: scroll;
+}
+
+h4{
+	color: #808080;
+	font-size: 10pt;
+}
+
 
 .leaflet-popup-content p {
 	margin: 0.5em;
 }
 
-#panel {
-	width:20%;
-	vertical-align: top;
-	text-align: center;
-}
 
 .range-slider {
 	width: 170px;
@@ -39,7 +73,6 @@ title {
     background-color: #ffffff;
     line-height: 5px;
     text-align: center;
-  /* padding: 10px auto;*/
     border: solid #4EB0AC 5px;
 }
 
@@ -56,33 +89,114 @@ title {
 	padding: 2px;
 }
 
-#info {
-	width: 20%;
-	display: right;
-	text-align: center;
-	
+#attribute-legend{
+	height: 100px;
+	width: 200px;
+	float: right;
+	background-color: #fff;
+	border: solid 5px;
+	border-color:  rgba(79, 176, 173, 1.0);
 }
 
-#temporal-legend {
-	background-color: rgba(79, 176, 173, 0.8);
-	border-width: 3px;
-	border-color: #000000;
-	float:right;
-	width: 120px;
-	height: 150px;
+
+
+#max-text{
+	float: right;
+}
+
+#temporal-legend{
+	margin: 0px auto;
+	font-size: 10pt;
+	font-family:Trebuchet;
+	color:#fff;
+	font-weight: bold;
+	background-color: rgba(79, 176, 173, 1.0);
+	padding: 2px;
+	text-align: center;
+	width: 200px;
+	height: 20px;
+}
+
+}
+p {
+	font-family: Helvetica;
+	margin: 5px;
+
 }
 
 h3{
-	color: #808080;
+	color: #ffffff;
+	margin: 0px;
+	font-family: Helvetica;
+	font-size: 12pt;
+
+}
+
+h1{
+	color: white;
 }
 
 footer{
-	width: 100%;
-	height: 320px;
-	background-color: rgba(79, 176, 173, 0.8);
-	color:#ffffff;
-	font-size: 12pt;
+	
+	height: 500px;
+	width: 70%;
+	background-color: rgba(79, 176, 173, 1.0);
+	color:#000000;
+	font-size: 10pt;
 	display: inline-block;
 	margin: 5px auto;
+	padding: 10px;
+	text-align: justify;
+	overflow: scroll;
+	
+	
+}
+
+figure{
+	margin: 5px;
+	display: inline-block;
+}
+
+figcaption{
+	text-align: center;
+}
+
+#saf{
+	border: solid 4px white;
+	height:230px;
+	width: 605px;
+	text-align: center;
+	margin: 5px auto;
+
+
+}
+
+#sab{
+	height:175px;
+	width: 250px;
+	margin: 5px;
+}
+
+#train{
+	height:175px;
+	width:250px;
+	margin: 5px;
+}
+
+#attribution{
+	text-align: justify;
+
+}
+
+#author{
+	float: right;
+}
+a:link {
+	color: #808080;
+	font-family: Helvetica;
+	font-size: 10pt;
+}
+a:hover {
+	color: white;
 }
 
